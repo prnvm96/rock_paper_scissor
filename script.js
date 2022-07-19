@@ -1,3 +1,7 @@
+let win = 0;
+let loss = 0;
+let tie = 0;
+
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random()*3) + 1;
     switch (randomNumber){
@@ -14,18 +18,23 @@ function getComputerChoice(){
 }
 function singleRound(playerSelection,computerSelection){
     if(playerSelection === computerSelection){
+        tie += 1;
         return ("It's a Tie!");
     }
     else if(playerSelection === "rock" && computerSelection ==="paper"){
+        loss += 1;
         return ("You Lose! Paper beats Rock");
     }
     else if(playerSelection === "paper" && computerSelection ==="scissor"){
+        loss += 1;
         return ("You Lose! Scissor beats Paper");
     }
     else if(playerSelection === "scissor" && computerSelection ==="rock"){
+        loss += 1;
         return ("You Lose! Rock beats Scissor");
     }
     else{
+        win +=1;
         return (`You won!  ${playerSelection} beats ${computerSelection}`);
     }
 
@@ -37,6 +46,23 @@ function singleRound(playerSelection,computerSelection){
 //     return str;
 
 // }
-const playerSelection = prompt("Enter your choice:'Rock','Paper' or 'Scissor'","Rock").toLowerCase();
-const computerSelection = getComputerChoice();
-console.log(singleRound(playerSelection, computerSelection));
+
+
+function game(){
+    for(let i = 0; i < 5; i++){
+        const playerSelection = prompt("Enter your choice:'Rock','Paper' or 'Scissor'","Rock").toLowerCase();
+        const computerSelection = getComputerChoice();
+        console.log(singleRound(playerSelection, computerSelection));
+    }
+    if (win === loss){
+        console.log("It's a Tie");
+    }
+    else if(win > loss){
+        console.log("You win");
+    }
+    else{
+        console.log("You Loss");
+    }
+    console.log(`Result Your Score = ${win} Computer Score = ${loss} Tie = ${tie}`);
+}
+game();
