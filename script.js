@@ -2,28 +2,27 @@ function getComputerChoice(){
     let randomNumber = Math.floor(Math.random()*3) + 1;
     switch (randomNumber){
         case 1:
-            console.log("Rock");
+            return("rock");
             break;
         case 2:
-            console.log("Paper");
+            return("paper");
             break;
         case 3:
-            console.log("Scissor");
+            return("scissor");
             break;
     }
 }
-
 function singleRound(playerSelection,computerSelection){
     if(playerSelection === computerSelection){
         return ("It's a Tie!");
     }
-    else if(playerSelection === "Rock" && computerSelection ==="Paper"){
+    else if(playerSelection === "rock" && computerSelection ==="paper"){
         return ("You Lose! Paper beats Rock");
     }
-    else if(playerSelection === "Paper" && computerSelection ==="Scissor"){
+    else if(playerSelection === "paper" && computerSelection ==="scissor"){
         return ("You Lose! Scissor beats Paper");
     }
-    else if(playerSelection === "Scissor" && computerSelection ==="Rock"){
+    else if(playerSelection === "scissor" && computerSelection ==="rock"){
         return ("You Lose! Rock beats Scissor");
     }
     else{
@@ -32,10 +31,12 @@ function singleRound(playerSelection,computerSelection){
 
 }
 
-function playerSelection(){
-    const str1 = prompt("Enter your choice:","Rock");
-    const str = str1.charAt(0).toUpperCase() + str1.slice(1).toLowerCase();
-    return str;
+// function playerSelection(){
+//     const str1 = prompt("Enter your choice:","Rock");
+//     const str = str1.charAt(0).toUpperCase() + str1.slice(1).toLowerCase();
+//     return str;
 
-}
-console.log(singleRound(playerSelection(),getComputerChoice()));
+// }
+const playerSelection = prompt("Enter your choice:'Rock','Paper' or 'Scissor'","Rock").toLowerCase();
+const computerSelection = getComputerChoice();
+console.log(singleRound(playerSelection, computerSelection));
